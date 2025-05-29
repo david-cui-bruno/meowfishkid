@@ -30,9 +30,9 @@ export default async function handler(req, res) {
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_USER,
-      subject: `[Krill Art Club] ${subject}`,
+      subject: `[Krill Art Club Contact Form] ${subject}`,
       html: `
-        <h3>New Contact Form Submission</h3>
+        <h3>Contact Form Submission</h3>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Subject:</strong> ${subject}</p>
