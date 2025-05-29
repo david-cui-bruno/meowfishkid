@@ -11,9 +11,9 @@ import Donate from "./pages/Donate";
 function App() {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col bg-gradient-to-b from-blue-100 to-blue-300">
+      <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#42b0fd' }}>
         <Header />
-        <main className="flex-1 pt-20 pb-24 px-4 max-w-5xl mx-auto w-full">
+        <main className="flex-1 pt-20 w-full">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/events" element={<Events />} />

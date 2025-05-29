@@ -16,25 +16,29 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <section className="p-8 max-w-3xl mx-auto mt-8 bg-white/80 rounded-3xl shadow-xl">
-      <h1 className="font-thick text-4xl text-blue-900 mb-6">FAQ</h1>
-      <div className="space-y-4">
-        {faqs.map((faq, idx) => (
-          <div
-            key={idx}
-            className="bg-blue-100 rounded-xl p-6 shadow cursor-pointer transition-all"
-            onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
-          >
-            <h2 className="font-thick text-xl flex items-center text-blue-900">
-              <span className="mr-2">{openIndex === idx ? "🦑" : "🦐"}</span>
-              {faq.question}
-            </h2>
-            {openIndex === idx && (
-              <p className="text-blue-700 mt-2">{faq.answer}</p>
-            )}
+    <div>
+      <section className="w-full py-16 px-8 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="font-thick text-4xl text-blue-900 mb-6">FAQ</h1>
+          <div className="space-y-4">
+            {faqs.map((faq, idx) => (
+              <div
+                key={idx}
+                className="bg-blue-100 p-6 shadow cursor-pointer transition-all"
+                onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
+              >
+                <h2 className="font-thick text-xl flex items-center text-blue-900">
+                  <span className="mr-2">{openIndex === idx ? "🦑" : "🦐"}</span>
+                  {faq.question}
+                </h2>
+                {openIndex === idx && (
+                  <p className="text-blue-700 mt-2">{faq.answer}</p>
+                )}
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </section>
+        </div>
+      </section>
+    </div>
   );
 }

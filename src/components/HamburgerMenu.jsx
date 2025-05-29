@@ -7,13 +7,13 @@ export default function HamburgerMenu() {
   return (
     <div className="relative">
       <button
-        className="w-10 h-10 flex flex-col justify-center items-center bg-blue-200 rounded-lg shadow hover:bg-blue-300 transition"
+        className="w-10 h-10 flex flex-col justify-center items-center bg-white/20 rounded-lg shadow hover:bg-white/30 transition"
         onClick={() => setOpen(!open)}
         aria-label="Open navigation menu"
       >
-        <span className="block w-6 h-1 bg-blue-700 rounded my-0.5"></span>
-        <span className="block w-6 h-1 bg-blue-700 rounded my-0.5"></span>
-        <span className="block w-6 h-1 bg-blue-700 rounded my-0.5"></span>
+        <span className="block w-6 h-1 bg-white rounded my-0.5"></span>
+        <span className="block w-6 h-1 bg-white rounded my-0.5"></span>
+        <span className="block w-6 h-1 bg-white rounded my-0.5"></span>
       </button>
       {open && (
         <div className="absolute right-0 mt-2 bg-white rounded-xl shadow-lg flex flex-col items-start py-2 px-4 z-50 space-y-2 min-w-[140px] border border-blue-200">
