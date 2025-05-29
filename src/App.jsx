@@ -11,18 +11,20 @@ import Donate from "./pages/Donate";
 function App() {
   return (
     <Router>
-      <Header />
-      <main className="min-h-screen pt-16 pb-20">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/resources" element={<Resources />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/donate" element={<Donate />} />
-        </Routes>
-      </main>
-      <Footer />
+      <div className="min-h-screen flex flex-col bg-gradient-to-b from-blue-100 to-blue-300">
+        <Header />
+        <main className="flex-1 pt-20 pb-24 px-4 max-w-5xl mx-auto w-full">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/resources" element={<Resources />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/donate" element={<Donate />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </Router>
   );
 }
