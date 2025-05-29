@@ -1,26 +1,35 @@
 import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
+  // Add CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
-  const { name, email, subject, message } = req.body;
-
-  // Create transporter (using Gmail - you can use other email services)
-  const transporter = nodemailer.createTransporter({
-    service: 'gmail',
-    auth: {
-      user: process.env.EMAIL_USER, // Your Gmail address
-      pass: process.env.EMAIL_PASS  // Your Gmail app password
-    }
-  });
-
   try {
-    // Send email
+    const { name, email, subject, message } = req.body;
+
+    // Check if environment variables exist
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      console.error('Missing environment variables');
+      return res.status(500).json({ error: 'Server configuration error' });
+    }
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+      }
+    });
+
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER, // Send to yourself
+      to: process.env.EMAIL_USER,
       subject: `[Krill Art Club] ${subject}`,
       html: `
         <h3>New Contact Form Submission</h3>
@@ -30,12 +39,12 @@ export default async function handler(req, res) {
         <p><strong>Message:</strong></p>
         <p>${message}</p>
       `,
-      replyTo: email // So you can reply directly to the sender
+      replyTo: email
     });
 
     res.status(200).json({ success: true, message: 'Email sent successfully' });
   } catch (error) {
-    console.error('Error sending email:', error);
-    res.status(500).json({ success: false, message: 'Failed to send email' });
+    console.error('Error in contact API:', error);
+    res.status(500).json({ success: false, message: 'Failed to send email', error: error.message });
   }
 }
