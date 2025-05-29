@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'BubbleFish';
+  src: url('./fonts/BubbleFish-Regular.otf') format('opentype'),
+       url('./fonts/BubbleFish-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ThickFish';
+  src: url('./fonts/ThickFish-Regular.otf') format('opentype'),
+       url('./fonts/ThickFish-Regular.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

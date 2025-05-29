@@ -16,16 +16,16 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <section className="p-8">
-      <h1 className="text-3xl font-bold text-blue-800 mb-4">FAQ</h1>
+    <section className="p-8 max-w-3xl mx-auto mt-8 bg-white/80 rounded-3xl shadow-xl">
+      <h1 className="font-thick text-4xl text-blue-900 mb-6">FAQ</h1>
       <div className="space-y-4">
         {faqs.map((faq, idx) => (
           <div
             key={idx}
-            className="bg-white/80 rounded-lg p-4 shadow cursor-pointer"
+            className="bg-blue-100 rounded-xl p-6 shadow cursor-pointer transition-all"
             onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
           >
-            <h2 className="font-semibold flex items-center">
+            <h2 className="font-thick text-xl flex items-center text-blue-900">
               <span className="mr-2">{openIndex === idx ? "🦑" : "🦐"}</span>
               {faq.question}
             </h2>
